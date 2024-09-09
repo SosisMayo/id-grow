@@ -29,6 +29,9 @@ COPY --from=composer:2.5 /usr/bin/composer /usr/bin/composer
 # Copy existing application directory contents to working directory
 COPY . /var/www/html
 
+# Copy the .env.example file to the working directory
+COPY .env.example .env
+
 # Set proper permissions
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html/storage \
